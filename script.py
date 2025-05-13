@@ -33,7 +33,8 @@ uploaded_file = st.file_uploader("Choose an Excel file", type=["xlsx", "xls"])
 if uploaded_file is not None:
     # Read Excel file into DataFrame
     df = pd.read_excel(uploaded_file)
-
+    df.columns = df.columns.droplevel(0)
+    
     # Display DataFrame
     st.subheader("Excel File Contents")
     st.write(df)
